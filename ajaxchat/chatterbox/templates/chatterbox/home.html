@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,6 +7,18 @@
     <header>SHOUT OUT INTO THE VOID</header>
   </head>
   <body>
-    {{statement.text}}
+    <h1>AOL Instant Messanger</h1>
+
+    <form id="statement" action="index.html" method="post">
+      <input type="text" name="name" value="">
+      <button type="button" name="button">Send</button>
+    </form>
+    <br>
+    <ul id='statements'></ul>
+
+      <br>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="/static/main.js"></script>
   </body>
 </html>

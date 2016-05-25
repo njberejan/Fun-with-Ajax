@@ -7,7 +7,7 @@ from .serializers import StatementSerializer
 
 class ChatterboxViewSet(viewsets.ModelViewSet):
 
-    queryset = Statement.objects.all().order_by('-created')
+    queryset = Statement.objects.all().order_by('created')
     serializer_class = StatementSerializer
 
 class ChatterboxView(TemplateView):
@@ -17,9 +17,8 @@ class ChatterboxView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['text'] = Statement.objects.all()
-        return render(request, template_name, context)
+        return context
 
-
-    # def get(self, request):
-    # context = self.get_context_data()
-    # return render(request, template_name, context)
+    def get(self, request):
+        context = self.get_context_data()
+        return render(request, "chatterbox/home.html", context)
